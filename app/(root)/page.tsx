@@ -4,7 +4,8 @@ import RightSidebar from '@/components/RightSidebar'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
 import { getAccount, getAccounts } from '@/lib/actions/bank.actions'
 import { getLoggedInUser } from '@/lib/actions/user.actions'
-import React from 'react'
+import React, { Suspense } from 'react'
+import { SkeletonCard } from "@/components/ui/skeleton"
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
@@ -26,12 +27,15 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
     <section className='home'>
       <div className='home-content'>
         <header className='home-header'>
+        <Suspense key={currentPage} fallback={<SkeletonCard/>}>
           <HeaderBox
-            type="greeting"
-            title="Welcome"
-            user={loggedIn?.firstName || 'Guest'}
-            subtext="Access and manage your account and transactions efficiently."
-          />
+              type="greeting"
+              title="Welcome"
+              user={loggedIn?.firstName || 'Guest'}
+              subtext="Access and manage your account and transactions efficiently."
+            />
+        </Suspense>
+    
           <TotalBalanceBox
             accounts={accountsData}
             totalBanks={accounts?.totalBanks}
