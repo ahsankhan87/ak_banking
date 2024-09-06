@@ -17,7 +17,7 @@ org: "khybersoft",
 project: "javascript-nextjs",
 
 // An auth token is required for uploading source maps.
-  authToken: process.env.SENTRY_AUTH_TOKEN,
+authToken: process.env.SENTRY_AUTH_TOKEN,
 
 // Only print logs for uploading source maps in CI
 silent: !process.env.CI,

@@ -1,9 +1,7 @@
-import React from 'react'
+import { SkeletonCard } from '@/components/ui/skeleton'
 
-const loading = () => {
-  return (
-    <div>loading</div>
-  )
+export default function loading() {
+  return <SkeletonCard />
 }
 
-export default loading
+ 
